@@ -1,0 +1,18 @@
+apply plugin: 'java'
+apply plugin: 'war'
+
+dependencies {
+    compile group:'org.springframework', name:'spring-webmvc', version:'4.1.7.RELEASE'
+    compile group:'javax.servlet', name:'javax.servlet-api', version:'3.0.1'
+    testCompile group:'junit', name:'junit', version:'4.12'
+    testCompile group:'org.mockito', name:'mockito-all', version:'1.10.19'
+    testCompile group:'org.springframework', name:'spring-test', version:'4.1.7.RELEASE'
+}
+
+repositories {
+    mavenCentral()
+}
+
+war {
+    archiveName 'gradle-built'
+}
