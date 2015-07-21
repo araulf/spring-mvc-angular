@@ -1,12 +1,10 @@
 package starter.config;
 
-import javax.servlet.ServletContext;
-import javax.servlet.ServletException;
-import javax.servlet.ServletRegistration;
-
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.http.converter.HttpMessageConverter;
+import org.springframework.http.converter.json.MappingJackson2HttpMessageConverter;
 import org.springframework.web.WebApplicationInitializer;
 import org.springframework.web.context.ContextLoaderListener;
 import org.springframework.web.context.support.AnnotationConfigWebApplicationContext;
@@ -17,6 +15,11 @@ import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
 import org.springframework.web.servlet.view.InternalResourceViewResolver;
 
+import javax.servlet.ServletContext;
+import javax.servlet.ServletException;
+import javax.servlet.ServletRegistration;
+import java.util.List;
+
 @Configuration
 @EnableWebMvc
 @ComponentScan(basePackages = {"starter.app"})
@@ -25,6 +28,7 @@ public class AppConfig extends WebMvcConfigurerAdapter implements WebApplication
     @Override
     public void addResourceHandlers(ResourceHandlerRegistry registry) {
         registry.addResourceHandler("/images/**").addResourceLocations("/images/");
+        registry.addResourceHandler("/js/**").addResourceLocations("/js/");
     }
 
     @Override
@@ -55,5 +59,11 @@ public class AppConfig extends WebMvcConfigurerAdapter implements WebApplication
         CommonsMultipartResolver multipartResolver = new CommonsMultipartResolver();
         multipartResolver.setMaxUploadSize(10485760L);
         return multipartResolver;
+    }
+
+    @Override
+    public void configureMessageConverters(List<HttpMessageConverter<?>> converters) {
+        MappingJackson2HttpMessageConverter mapperFactoryBean = new MappingJackson2HttpMessageConverter();
+        converters.add(mapperFactoryBean);
     }
 }

@@ -1,4 +1,4 @@
-package starter.app;
+package starter.app.web;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.RequestMapping;
