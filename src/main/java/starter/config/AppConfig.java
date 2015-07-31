@@ -29,6 +29,7 @@ public class AppConfig extends WebMvcConfigurerAdapter implements WebApplication
     public void addResourceHandlers(ResourceHandlerRegistry registry) {
         registry.addResourceHandler("/images/**").addResourceLocations("/images/");
         registry.addResourceHandler("/js/**").addResourceLocations("/js/");
+        registry.addResourceHandler("/bower_components/**").addResourceLocations("/bower_components/");
     }
 
     @Override
