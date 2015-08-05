@@ -26,7 +26,7 @@ task bowerInstall(type: NodeTask) {
 
 task karma(type: NodeTask) {
     script = file('node_modules/karma/bin/karma')
-    args = ['start', 'karma.conf.js']
+    args = ['start', 'src/test/js/karma-test/karma.conf.js']
     //args = ['init', 'karma2.conf.js']
     //args = ['--browsers', 'PhantomJS', 'custom']
 }
