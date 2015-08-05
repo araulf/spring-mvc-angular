@@ -27,8 +27,7 @@ task bowerInstall(type: NodeTask) {
 task karma(type: NodeTask) {
     script = file('node_modules/karma/bin/karma')
     args = ['start', 'src/test/js/karma-test/karma.conf.js']
-    //args = ['init', 'karma2.conf.js']
-    //args = ['--browsers', 'PhantomJS', 'custom']
+    dependsOn bowerInstall
 }
 
 dependencies {
@@ -47,5 +46,6 @@ repositories {
 
 war {
     baseName 'angular-webapp'
-    dependsOn bowerInstall
+    dependsOn test
+    dependsOn karma
 }
