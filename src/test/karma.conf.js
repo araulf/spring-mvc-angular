@@ -3,7 +3,10 @@ module.exports = function(config) {
     basePath: '.',
     browsers: ['PhantomJS'],
     frameworks: ['jasmine'],
-    files: ['*.spec.js'],
+    files: ['../main/webapp/bower_components/angular/angular.js',
+            '../main/webapp/bower_components/angular-mocks/angular-mocks.js',
+            '../main/webapp/js/angular-test.js',
+            '**/*.spec.js',],
     plugins: ['karma-jasmine',
               'karma-phantomjs-launcher'],
     singleRun: true

@@ -26,7 +26,7 @@ task bowerInstall(type: NodeTask) {
 
 task karma(type: NodeTask) {
     script = file('node_modules/karma/bin/karma')
-    args = ['start', 'src/test/js/karma-test/karma.conf.js']
+    args = ['start', 'src/test/karma.conf.js']
     dependsOn bowerInstall
 }
 
